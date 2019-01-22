@@ -24,7 +24,7 @@
                   </label>
                   <label for="">
                       Name：
-                      <input type="text" class="form-control" v-model="name">
+                      <input type="text" class="form-control" v-model="name" @keyup.enter="add">
                   </label>
                   <label for="">
                       请输入关键字:
@@ -57,11 +57,13 @@
         Vue.filter('dateFormat',function(date){
             var dt=new Date(date)
             var y=dt.getFullYear()
-            var m=dt.getMonth()+1
-            var d=dt.getDate()
+            var m=(dt.getMonth()+1).toString().padStart(2,'0')
+            var d=dt.getDate().toString().padStart(2,'0')
             return y+'-'+m+'-'+d
             // return `${y}-${m}-${d}`
         })
+        // 自定义按键修饰符
+        Vue.config.keyCodes.f2=113
         const app=new Vue({
             data:{
                 id:'',
