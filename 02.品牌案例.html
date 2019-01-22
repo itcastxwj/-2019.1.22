@@ -28,7 +28,7 @@
                   </label>
                   <label for="">
                       请输入关键字:
-                      <input type="text" class="form-control" v-model="keywords" id="search" v-focus v-color="'hotpink'">
+                      <input type="text" class="form-control" v-model="keywords" id="search" v-focus v-color="'hotpink'" v-fontweight="900">
                   </label>
                   <input type="button" value="添加" class="btn btn-primary" @click="add">
               </div>
@@ -118,6 +118,13 @@
                             return item
                         }
                     })
+                }
+            },
+            directives:{
+                'fontweight':{
+                    bind:function(el,binding){
+                        el.style.fontWeight=binding.value
+                    }
                 }
             }
         }).$mount('#app')
