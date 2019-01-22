@@ -44,7 +44,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in list" >
+                <tr v-for="item in search(keywords)" :key="item.id" >
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.ctime}}</td>
@@ -79,6 +79,20 @@
                         this.list.splice(i,1)
                         return true
                        }
+                    })
+                },
+                search(keywords){
+                    // var newList=[]
+                    // this.list.forEach(item=>{
+                    //     if(item.name.indexOf(keywords)!=-1){
+                    //         newList.push(item)
+                    //     }
+                    // })
+                    // return newList
+                    return this.list.filter(item=>{
+                        if(item.name.includes(keywords)){
+                            return item
+                        }
                     })
                 }
             }
